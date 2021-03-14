@@ -8,8 +8,16 @@ import { GlobalDataSummary } from './../models/global-data';
 export class DataServiceService {
   private globalDataUrl =
     'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-13-2021.csv';
+  private dateWiseDataUrl = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv`;
   constructor(private http: HttpClient) {}
 
+  getDateWiseData(): any {
+    this.http.get(this.dateWiseDataUrl, { responseType: 'text' }).pipe(
+      map((result) => {
+        return result;
+      })
+    );
+  }
   getGlobalData(): any {
     return this.http.get(this.globalDataUrl, { responseType: 'text' }).pipe(
       map((result) => {

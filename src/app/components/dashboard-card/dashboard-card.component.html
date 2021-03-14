@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col card p-2 m-3">
+        <div class="ui statistic">
+            <div class="label">
+                <h4>Confirmed</h4>
+
+            </div>
+            <div class="value">
+                {{numberWithComma(totalConfirmed)}}
+            </div>
+
+        </div>
+    </div>
+    <div class="col card p-2 m-3">
+        <div class="ui statistic">
+            <div class="label">
+                <h4>Recovered</h4>
+
+            </div>
+            <div class="value">
+                {{numberWithComma(totalRecovered)}}
+            </div>
+
+        </div>
+    </div>
+    <div class="col card p-2 m-3">
+        <div class="ui statistic">
+            <div class="label">
+                <h4>Deaths</h4>
+            </div>
+            <div class="value">
+                {{numberWithComma(totalDeaths)}}
+            </div>
+
+        </div>
+    </div>
+    <div class="col card p-2 m-3">
+        <div class="ui statistic">
+            <div class="label">
+                <h4>Active</h4>
+            </div>
+            <div class="value">
+                {{numberWithComma(totalActive)}}
+            </div>
+
+        </div>
+    </div>
+</div>
