@@ -1,9 +1,52 @@
 <div class="jumbotron bg-white text-center">
     <h1 class="display-4">Corona Covid-19 Tracker</h1>
-    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. In cum quae eum ex, laborum unde modi tempora quam quasi reprehenderit, saepe assumenda ipsum. Incidunt, nesciunt. Temporibus magni nam architecto aliquid.</p>
-    <hr class="my-2">
-    <p>More info</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-    </p>
+    <div class="row">
+        <div class="col card p-3 m-3">
+            <div class="ui statistic">
+                <div class="label">
+                    <h3>Confirmed</h3>
+                
+                </div>
+                <div class="value">
+                  {{totalConfirmed}}
+                </div>
+                
+            </div>
+        </div>
+        <div class="col card p-3 m-3">
+            <div class="ui statistic">
+                <div class="label">
+                    <h3>Recovered</h3>
+                
+                </div>
+                <div class="value">
+                    {{totalRecovered}}
+                </div>
+               
+            </div>
+        </div>
+        <div class="col card p-3 m-3">
+            <div class="ui statistic">
+                <div class="label">
+                    <h3>Deaths</h3>
+                
+                </div>
+                <div class="value">
+                {{totalDeaths}}
+                </div>
+               
+            </div>
+        </div>
+        <div class="col card p-3 m-3">
+            <div class="ui statistic">
+                <div class="label">
+                    <h3>Active</h3>
+                </div>
+                <div class="value">
+                    {{totalActive}}
+                </div>
+               
+            </div>
+        </div>
+    </div>
 </div>
