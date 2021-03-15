@@ -1,0 +1,12 @@
+.label-active {
+    color: #28a745  !important;
+}
+.label-deaths {
+    color: #666666 !important;
+}
+.label-recovered {
+    color:  #ff9c00 !important;
+}
+.label-confirmed {
+    color: #c9302c !important;
+}

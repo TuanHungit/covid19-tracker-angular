@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col card p-2 m-3">
-        <div class="ui statistic">
-            <div class="label">
+        <div class="ui statistic ">
+            <div class="label label-confirmed ">
                 <h4>Confirmed</h4>
 
             </div>
-            <div class="value">
+            <div class="value label-confirmed ">
                 {{numberWithComma(totalConfirmed)}}
             </div>
 
@@ -13,11 +13,11 @@
     </div>
     <div class="col card p-2 m-3">
         <div class="ui statistic">
-            <div class="label">
+            <div class="label label-recovered">
                 <h4>Recovered</h4>
 
             </div>
-            <div class="value">
+            <div class="value label-recovered">
                 {{numberWithComma(totalRecovered)}}
             </div>
 
@@ -25,10 +25,10 @@
     </div>
     <div class="col card p-2 m-3">
         <div class="ui statistic">
-            <div class="label">
+            <div class="label label-deaths">
                 <h4>Deaths</h4>
             </div>
-            <div class="value">
+            <div class="value label-deaths">
                 {{numberWithComma(totalDeaths)}}
             </div>
 
@@ -36,10 +36,10 @@
     </div>
     <div class="col card p-2 m-3">
         <div class="ui statistic">
-            <div class="label">
+            <div class="label label-active">
                 <h4>Active</h4>
             </div>
-            <div class="value">
+            <div class="value  label-active">
                 {{numberWithComma(totalActive)}}
             </div>
 

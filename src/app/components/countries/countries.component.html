@@ -34,7 +34,8 @@
             </table>
         </div>
         <div class="col">
-            <google-chart [data]="lineChart"></google-chart>
+            <google-chart [type]='chart.LineChart' [options]='chart.options' style="width: 100%;" [height]='chart.height'
+                [data]='dataTable'></google-chart>
         </div>
     </div>
 </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleChartInterface } from 'ng2-google-charts';
 import { DataServiceService } from '../../services/data-service.service';
 import { GlobalDataSummary } from './../../models/global-data';
 
@@ -14,13 +13,20 @@ export class HomeComponent implements OnInit {
   totalDeaths = 0;
   totalRecovered = 0;
   loading = true;
+  dataTable = [];
+  chart = {
+    PieChart: 'PieChart',
+    ColumnChart: 'ColumnChart',
+    height: 500,
+    options: {
+      animation: {
+        duration: 1000,
+        easing: 'out',
+      },
+    },
+  };
   globalData: GlobalDataSummary[];
-  pieChart: GoogleChartInterface = {
-    chartType: 'PieChart',
-  };
-  columnChart: GoogleChartInterface = {
-    chartType: 'ColumnChart',
-  };
+
   constructor(private DataService: DataServiceService) {}
 
   ngOnInit(): void {
@@ -41,48 +47,36 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  initChart(casetype: string): void {
-    const datatable = [];
-    datatable.push(['Country', 'Cases']);
-    this.globalData.forEach((cs: GlobalDataSummary) => {
+  initChart(caseType: string): any {
+    this.dataTable = [];
+    // this.datatable.push(["Country", "Cases"])
+    this.globalData.forEach((cs) => {
       let value: number;
-      switch (casetype) {
-        case 'a':
-          if (cs.active > 2000000) {
-            value = cs.active;
-          }
-          break;
-        case 'd':
-          if (cs.deaths > 2000000) {
-            value = cs.deaths;
-          }
-          break;
-        case 'r':
-          if (cs.recovered > 2000000) {
-            value = cs.recovered;
-          }
-          break;
-        case 'c':
-          if (cs.confirmed > 2000000) {
-            value = cs.confirmed;
-          }
-          break;
+      if (caseType === 'c') {
+        if (cs.confirmed > 2000000) {
+          value = cs.confirmed;
+        }
+      }
+      if (caseType === 'd') {
+        if (cs.deaths > 20000) {
+          value = cs.deaths;
+        }
+      }
+      if (caseType === 'a') {
+        if (cs.active > 20000) {
+          value = cs.active;
+        }
+      }
+      if (caseType === 'r') {
+        if (cs.recovered > 2000000) {
+          value = cs.recovered;
+        }
       }
 
-      datatable.push([cs.country, value]);
+      this.dataTable.push([cs.country, value]);
     });
-
-    this.pieChart = {
-      chartType: 'PieChart',
-      dataTable: datatable,
-      options: { height: 500 },
-    };
-    this.columnChart = {
-      chartType: 'ColumnChart',
-      dataTable: datatable,
-      options: { height: 500 },
-    };
   }
+
   updateChart(input: HTMLInputElement): void {
     this.initChart(input.value);
   }
