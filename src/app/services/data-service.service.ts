@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { GlobalDataSummary } from './../models/global-data';
+import { DateWiseData } from '../models/date-wise-data';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,9 +13,29 @@ export class DataServiceService {
   constructor(private http: HttpClient) {}
 
   getDateWiseData(): any {
-    this.http.get(this.dateWiseDataUrl, { responseType: 'text' }).pipe(
+    return this.http.get(this.dateWiseDataUrl, { responseType: 'text' }).pipe(
       map((result) => {
-        return result;
+        const rows = result.split('\n');
+        const mainData = {};
+        const header = rows[0];
+        const dates = header.split(/,(?=\S)/);
+        dates.splice(0, 4);
+        rows.splice(0, 1);
+        rows.forEach((row) => {
+          const cols = row.split(/,(?=\S)/);
+          const con = cols[1];
+          cols.splice(0, 4);
+          mainData[con] = [];
+          cols.forEach((value, index) => {
+            const dw: DateWiseData = {
+              cases: +value,
+              country: con,
+              date: new Date(Date.parse(dates[index])),
+            };
+            mainData[con].push(dw);
+          });
+        });
+        return mainData;
       })
     );
   }
